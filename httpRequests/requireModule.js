@@ -5,4 +5,8 @@ const requestOptions = {
   path: '/http-examples/step5.html'
 };
 
-console.log(getHTML.getHTML(requestOptions, getHTML.printHTML));
+const printHTML = html => {
+  console.log(html);
+}
+
+getHTML.getHTML(requestOptions, printHTML);

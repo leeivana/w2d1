@@ -7,9 +7,11 @@ function getAndPrintHTML(){
   }
 
   https.get(requestOptions, response => {
-    let allData;
+    let allData = '';
     response.on('data', (data) => {
       allData += (data + '\n');
+    });
+    response.on('end', () => {
       console.log(allData);
     });
   });

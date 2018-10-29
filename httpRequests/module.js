@@ -1,15 +1,14 @@
 const https = require('https');
 module.exports = {
-    getHTML: function(options, callback) {
-        let allData;
+    getHTML: (options, callback) => {
+        let allData = '';
         https.get(options, response => {
             response.on('data', (data) => {
                 allData += (data + '\n');
-                callback(allData);
             });
+            response.on('end', () =>{
+                callback(allData);
+            })
         });
-    },
-    printHTML: html => {
-        console.log(html);
     }
 }
